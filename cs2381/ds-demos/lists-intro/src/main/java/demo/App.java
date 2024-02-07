@@ -63,12 +63,15 @@ public class App {
      * @return     Output list
      */
     static List<Integer> add1ToAll(List<Integer> xs) {
-        var ys = new ArrayList<Integer>();
-        for (var xx : xs) {
-            ys.add(xx + 1);
+        var ys = new ArrayList<Integer>();  // 1
+        for (var xx : xs) {          // 1
+            ys.add(xx + 1);          // 2
         }
-        return ys;
+        return ys; // 1
     }
+    // For an input of size 1, 5 ops
+    // For an input of size n, 2 + 3*n ops.
+    // So that's O(n)
 
     // Design a method that takes a list of
     // integers and adds 1 to each in place.
@@ -93,8 +96,11 @@ public class App {
         //System.out.println("" + jj);
     }
 
+    // For an input of size n, this takes 1 operation.
+    //    ops(n) = 1
+    //    method1 is O(1)
     static int method1(List<Integer> xs) {
-        return xs.get(0);
+        return xs.get(0);  // One operation
     }
 }
 
@@ -113,3 +119,8 @@ class Pair<T, U> {
 //  - How does the amount of time this code takes to
 //    run vary as the size of the input changes? 
 
+// O (Big-O) notation:
+//  - Provides an upper bound on the complexity (number of
+//    operations) of a method based on the size of the input.
+//  - Ignore constant factors.
+//    (1 operation = 100 operations) is O(1).
