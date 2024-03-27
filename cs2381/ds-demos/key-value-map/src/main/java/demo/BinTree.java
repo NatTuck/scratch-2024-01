@@ -65,8 +65,22 @@ record BinBranch<K extends Comparable<K>, V>(
 
     @Override
     public V get(K key) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        // Assume tree hight O(log n)
+        // O(log n)
+
+        int cmp = key.compareTo(data.key());
+        
+        if (cmp == 0) {
+            // we found it
+            return data().val();
+        }
+
+        if (cmp < 0) {
+            return left().get(key);
+        }
+        else {
+            return right().get(key);
+        }
     }
 
     @Override
@@ -77,8 +91,8 @@ record BinBranch<K extends Comparable<K>, V>(
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        // O(n)
+        return 1 + left().size() + right().size();
     }
     
 }
@@ -97,14 +111,14 @@ record BinLeaf<K extends Comparable<K>, V>() implements BinTree<K, V> {
 
     @Override
     public BinTree<K, V> add(K key, V val) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+        return new BinBranch<>(
+            new Entry<>(key, val), 
+            this, this);
     }
 
     @Override
     public V get(K key) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        throw new RuntimeException("no such key");
     }
 
     @Override
@@ -115,8 +129,7 @@ record BinLeaf<K extends Comparable<K>, V>() implements BinTree<K, V> {
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return 0;
     }
 
 }
