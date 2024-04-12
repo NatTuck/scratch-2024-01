@@ -91,7 +91,7 @@ public class HashMap<K, V> {
                 break;
             }
             if (ent.key().equals(key)) {
-                data[sl] = null;
+                data[sl] = new Entry(null, null);
                 return;
             }
         }

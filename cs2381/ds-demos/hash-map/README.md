@@ -11,3 +11,18 @@ mvn checkstyle:checkstyle
 mvn exec:java
 mvn clean
 ```
+
+Array with slots for 16 entries:
+
+ - 16 byte object header
+ - 16 * 8 = 128 B of array data
+ - total = 144 B
+
+Binary tree of 5 entries:
+
+ - 5 branches = 3 fields + object header = 5 * 40 = 200 B
+ - 6 leaves = 0 fields + object header = 6 * 16 = 96 B
+ - total = 296 B
+
+
+
