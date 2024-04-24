@@ -17,23 +17,30 @@ public class App {
     public static void main(String[] args) throws IOException {
         var con = System.console();
 
-        //var secret = randomPuzzle();
-        //var guesses = new HashSet<Integer>();
-
         var words = readWords();
 
+        var secret = randomPuzzle();
+        var guesses = new HashSet<Integer>();
+
         while (true) {
+            var view = puzzleView(secret, guesses);
+
+            con.printf("view: %s\n", view);
             var pattern = con.readLine("pattern> ");
 
             for (var ww : words) {
-                if (match(pattern, ww)) {
+                if (match(pattern, ww, guesses)) {
                     con.printf("%s\n", ww);
                 }
             }
+
+            var guess = con.readLine("guess> ");
+            guesses.add(guess.codePointAt(0));
         }
+        
     }
 
-    static boolean match(String pat, String word) {
+    static boolean match(String pat, String word, HashSet<Integer> guesses) {
         final int dash = "-".codePointAt(0);
 
         // pattern:  --e
@@ -46,6 +53,9 @@ public class App {
             int bb = word.codePointAt(ii);
             if (aa != bb && aa != dash) {
                 return false;
+            }
+            if (aa == dash) {
+                // guesses
             }
         }
 
