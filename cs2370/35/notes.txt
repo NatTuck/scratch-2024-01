@@ -1,0 +1,4 @@
+Today we talked about at least two things:
+
+ - Jupiter notebooks
+ - Source control with Git
