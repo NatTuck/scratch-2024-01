@@ -15,6 +15,12 @@ import java.util.zip.GZIPInputStream;
 
 public class App {
     public static void main(String[] args) throws IOException {
+        short xx = 7;
+
+
+    }
+
+    public static void main1(String[] args) throws IOException {
         var con = System.console();
 
         var words = readWords();
